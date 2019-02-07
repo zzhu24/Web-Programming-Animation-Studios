@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<style>
+* {
+    box-sizing: border-box
+}
+
+html {
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.6;
+    color: black;
+    background: #F9E9F4;
+}
+
+#root {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 1.5rem 2.5rem;
+    margin: 0 0 2rem 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+}
+
+
+p {
+    text-align: center;
+    padding: 0px 20px 20px;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 1rem;
+    background: white;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 900px) {
+    .card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+}
+
+.card:nth-child(1n) h1 {
+    background-image: linear-gradient(90deg, #3337AF 0%, #DDDDF6 50%, #3337AF 100%);
+}
+
+.card:nth-child(2n) h1 {
+    background-image: linear-gradient(90deg, #D436C4 0%, #F2BEEC 50%, #D436C4 100%);
+}
+
+.card:nth-child(3n) h1 {
+    background-image: linear-gradient(90deg, #47BD4B 0%, #D0FAD1 50%, #47BD4B 100%);
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Favourite Page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script>
+
+        var current_star = JSON.parse(localStorage.getItem('star_anime'));
+
+        const app = document.getElementById('root');
+
+        const logo = document.createElement('img');
+        logo.onclick = function() {
+            window.location.href = '/FinalProject/ProfilePage.html';
+        };
+
+        logo.src = "/FinalProject/images/namida.jpg"
+
+        const p_info = document.createElement('p');
+        p_info.textContent = "There Is The Page For Starred Animations !!!";
+        app.appendChild(logo);
+        app.appendChild(p_info);
+
+        //alert(JSON.stringify(current_star));
+
+
+        const container = document.createElement('div');
+        container.setAttribute('class', 'container');
+        app.appendChild(container);
+
+        for (var i = current_star.length-1; i >=0; i--){
+
+            movie = current_star[i];
+
+            const card = document.createElement('div');
+            card.setAttribute('class', 'card');
+
+            const h1 = document.createElement('h1');
+            h1.textContent = "Name: "+`${movie.Name}`;
+            //alert(movie.Name);
+
+            const image = document.createElement('img');
+            image.onclick = function(){
+                //alert("Delete!!!");
+                current_star.splice(i, 1);
+                //alert(JSON.stringify(new_star));
+                //localStorage.clear();
+                localStorage.setItem("star_anime", JSON.stringify(current_star));
+                alert("Deleted From Favourite Animation List!!!!");
+                window.location.href = '/FinalProject/FavouritePage.html';
+            };
+
+            image.src = movie.Image;
+
+            const p1 = document.createElement('p');
+            movie.release = movie.Release;
+            p1.textContent = "Release Day: "+`${movie.release}`;
+
+            const p2 = document.createElement('p');
+            movie.director = movie.Director;
+            p2.textContent = "Directed By: "+`${movie.director}`;
+
+            const p3 = document.createElement('p');
+            movie.producer = movie.Director;
+            p3.textContent = "Produced By: "+`${movie.producer}`;
+
+            const p = document.createElement('p');
+            movie.Information = movie.Description;
+            p.textContent = "Plot: "+`${movie.Information}`;
+
+            container.appendChild(card);
+            card.appendChild(h1);
+            card.appendChild(image);
+            card.appendChild(p2);
+            card.appendChild(p3);
+            card.appendChild(p1);
+            card.appendChild(p);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

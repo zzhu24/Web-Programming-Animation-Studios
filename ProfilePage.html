@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<title>Animation Personal Profile Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+.backgroundscreen {
+    background-position: center;
+    background-size: cover;
+    background-image: url('../FinalProject/images/kiminonawa.jpg');
+    min-height: 75%;
+}
+.menu {
+    display: none;
+}
+</style>
+<body>
+
+
+    <div class="w3-top">
+        <div class="w3-row w3-padding w3-black">
+            <div class="w3-col s3">
+                <a href="#" class="w3-button w3-block w3-black">START</a>
+            </div>
+            <div class="w3-col s3">
+                <a href="#introduction" class="w3-button w3-block w3-black">INTRODUCTION</a>
+            </div>
+            <div class="w3-col s3">
+                <a href="#favorite" class="w3-button w3-block w3-black">FAVOURITE</a>
+            </div>
+            <div class="w3-col s3">
+                <a href="#following" class="w3-button w3-block w3-black">FOLLOWINGS</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header with image -->
+    <header class="backgroundscreen w3-display-container" id="home">
+        <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+        </div>
+        <div class="w3-display-middle w3-center">
+            <p class="w3-text-white" style="font-size:90px" id="tempuser" contenteditable="true"></p>
+            <p class="w3-text-white" style="font-size:90px" contenteditable="true">Homepage</p>
+        </div>
+    </header>
+
+
+    <div class="w3-light-grey w3-large">
+
+    <!-- About Container -->
+    <div class="w3-container" id="introduction">
+        <div class="w3-content" style="max-width:700px">
+            <a href='/FinalProject/StartPage.html'>
+                <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT WEBPAGE</span></h5>
+            </a>
+            <p contenteditable="true">This webpage is for people to search for information about animations. There are further functions such as follow, star, search, recommendation.</p>
+            <img src="/FinalProject/images/howl.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+            <p><strong>Favorite Animation: </strong></p><p contenteditable="true"> Howl's Moving Castle</p>
+        </div>
+    </div>
+
+    <!-- Menu Container -->
+    <div class="w3-container" id="favorite">
+        <div class="w3-content" style="max-width:700px">
+
+            <a href='/FinalProject/FavouritePage.html'>
+                <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">FAVOURITE</span></h5>
+            </a>
+
+            <div class="w3-row w3-center w3-card w3-padding">
+                <a href="javascript:void(0)" onclick="openMenu(event, 'Studio');" id="myLink">
+                    <div class="w3-col s6 tablink">Favourite Studio</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openMenu(event, 'Animation');">
+                    <div class="w3-col s6 tablink">Favourite Animation</div>
+                </a>
+            </div>
+
+            <div id="Studio" class="w3-container menu w3-padding-48 w3-card">
+                <h5 contenteditable="true" name="ghibli_studio">Ghibli ジブリ</h5>
+                <p class="w3-text-grey" contenteditable="true">Produced: Howl's Moving Castle, Princess Mononoke, Spirited Away</p><br>
+
+                <h5 contenteditable="true" name="aniplex_studio">Aniplex アニプレックス</h5>
+                <p class="w3-text-grey" contenteditable="true">Produced: Fullmetal Alchemist, Natsume's Book of Friends</p><br>
+                <h5 contenteditable="true" name="deen_studio">Deen スタジオディーン</h5>
+                <p class="w3-text-grey" contenteditable="true">Produced: The World's Greatest First Love, Hakuōki, Cold Hearted Hozuki</p><br>
+
+                <h5 contenteditable="true" name="bones_studio">Bones ボンズ</h5>
+                <p class="w3-text-grey" contenteditable="true">Produced: Bungo Stray Dogs, My Hero Academia, Noragami</p><br>
+            </div>
+
+            <div id="Animation" class="w3-container menu w3-padding-48 w3-card">
+                <h5 contenteditable="true">Princess Mononoke</h5>
+                <p class="w3-text-grey" contenteditable="true">	もののけ姫</p><br>
+
+                <h5 contenteditable="true">Cold Hearted Hozuki</h5>
+                <p class="w3-text-grey" contenteditable="true">鬼灯の冷徹</p><br>
+
+                <h5 contenteditable="true">Bungo Stray Dogs</h5>
+                <p class="w3-text-grey" contenteditable="true">文豪ストレイドッグス</p><br>
+
+                <h5 contenteditable="true">My Hero Academia</h5>
+                <p class="w3-text-grey" contenteditable="true">僕のヒーローアカデミア</p><br>
+
+                <h5 contenteditable="true">Fullmetal Alchemist</h5>
+                <p class="w3-text-grey" contenteditable="true">鋼の錬金術師</p>
+            </div>
+            <img src="/FinalProject/images/bungo.jpeg" style="width:100%;max-width:1000px;margin-top:32px;">
+        </div>
+    </div>
+
+
+        <div class="w3-container" id="following" style="padding-bottom:32px;">
+            <div class="w3-content" style="max-width:700px">
+                <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide" name="following_bar">Your Following</span></h5>
+                <p>Your Can Explor Your Following Here !!</p>
+                <a href='/FinalProject/FollowingPage.html'>
+                        <p><span class="w3-tag">See Your Following</span></p>
+                </a>
+                <form action="/action_page.php" target="_blank">
+                    <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Seach For User Here" required name="search_user"></p>
+                    <a href='/FinalProject/SearchUserPage.html'>
+                        <button type="button" class="w3-button w3-black w3-margin-bottom" onclick="save_search_user()">Search</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+
+    <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-48 w3-large">
+        <p>Zhiyu Zhu (zzhu24) <br>   source from : <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p>
+    </footer>
+
+
+    <script>
+
+
+        var username_saved = localStorage.getItem('saved_user_name');
+        //alert(username_saved);
+        document.getElementById("tempuser").innerHTML = username_saved;
+        //localStorage.clear();
+
+        function openMenu(evt, menuName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("menu");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+            }
+            document.getElementById(menuName).style.display = "block";
+            evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+        }
+
+        document.getElementById("myLink").click();
+
+
+
+        function save_search_user() {
+            var user_name = document.getElementsByName("search_user")[0].value;
+            //alert(user_name);
+            localStorage.setItem('save_user_search_key', user_name);
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<title>Animation Go</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .w3-sidebar a {font-family: "Roboto", sans-serif}
+    body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+<body class="w3-content" style="max-width:1200px">
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-white w3-animate-top w3-xxxlarge" style="display:none;right:0;padding-top:50px" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-white w3-xxlarge w3-padding w3-display-topleft" style="padding:6px 24px">
+        <i class="fa fa-remove"></i>
+    </a>
+    <div class="w3-container w3-display-container w3-padding">
+        <h3 class="w3-wide"><b>Following</b></h3>
+    </div>
+    <div class="w3-padding w3-large w3-text-grey" style="font-weight:bold">
+        <a onclick="myAccFunc('ghiblilist')" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="ghibli">
+            Ghibli ジブリ <i class="fa fa-caret-down"></i>
+        </a>
+        <div id="ghiblilist" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="#" class="w3-bar-item w3-button">Howl's Moving Castle ハウルの動く城</a>
+            <a href="#" class="w3-bar-item w3-button">Princess Mononoke もののけ姫</a>
+            <a href="#" class="w3-bar-item w3-button">Spirited Away 千と千尋の神隠し</a>
+        </div>
+
+        <a onclick="myAccFunc('aniplexlist')" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="aniplex">
+            Aniplex アニプレックス <i class="fa fa-caret-down"></i>
+        </a>
+        <div id="aniplexlist" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="#" class="w3-bar-item w3-button">Fullmetal Alchemist 鋼の錬金術師</a>
+            <a href="#" class="w3-bar-item w3-button">Natsume's Book of Friends 夏目友人帐
+            </a>
+        </div>
+
+        <a onclick="myAccFunc('animationlist')" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="animation">
+            Bones ボンズ<i class="fa fa-caret-down"></i>
+        </a>
+        <div id="animationlist" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+            <a href="#" class="w3-bar-item w3-button">Bungo Stray Dogs 文豪ストレイドッグス</a>
+            <a href="#" class="w3-bar-item w3-button">My Hero Academia 僕のヒーローアカデミア</a>
+            <a href="#" class="w3-bar-item w3-button">Noragami ノラガミ</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+    <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:0px">
+
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:83px"></div>
+
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+        <span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"\></i></span>
+        <p class="w3-left">
+            <i href="javascript:void(0)" class="fa fa-user-circle-o w3-margin-right w3-xxlarge" onclick="document.getElementById('signinbox').style.display='block'"  name="sign_in_button"></i>
+            <i href="javascript:void(0)" class="fa fa-refresh w3-margin-right w3-xxlarge" onclick="clear_restart_local()"  name="clear_button"></i>
+        </p>
+    </header>
+
+    <!-- Image header -->
+    <div class="w3-display-container w3-container">
+        <img src="/FinalProject/images/bumi.jpg" alt="animations" style="width:100%">
+        <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
+            <h1 class="w3-jumbo w3-hide-small">Top Viewed</h1>
+            <h1 class="w3-hide-large w3-hide-medium">Top Viewed</h1>
+            <h1 class="w3-hide-small">Animation Recommendation</h1>
+            <p><a href='/FinalProject/RecommendationPage.html' class="w3-button w3-black w3-padding-large w3-large">Recommendation</a></p>
+            <p><a href='/FinalProject/UserPage.html' class="w3-button w3-black w3-padding-large w3-large">Click  For  Users</a></p>
+        </div>
+    </div>
+
+    <div class="w3-container w3-text-grey" id="animations">
+        <p></p>
+    </div>
+
+
+
+    <!-- Subscribe section -->
+    <div class="w3-container w3-black w3-padding-32">
+        <h1>Search</h1>
+        <p>Get Information About Specific Studio, User or Animation</p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Type Here to Search..." style="width:100%" name="search_studio"></p>
+        <a href='/FinalProject/SearchPage.html'>
+            <button type="button" class="w3-button w3-red w3-margin-bottom" onclick="save_search_local()">Search</button>
+        </a>
+    </div>
+
+
+    <!-- Animation Recommendation grid -->
+    <div class="w3-row w3-padding-32">
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/howlsmovingcastle.jpg" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Howl%27s_Moving_Castle'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Howl's Moving Castle ハウルの動く城<br><b>Ghibli Studio</b></p>
+            </div>
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/spiritedaway.png" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Spirited_Away'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Spirited Away 千と千尋の神隠し<br><b>Ghibli Studio</b></p>
+            </div>
+        </div>
+
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/durarara.jpg" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Durarara!!'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Durarara!!!<br><b>Aniplex Studios</b></p>
+            </div>
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/fullmetalalchemist.jpg" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Fullmetal_Alchemist'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Fullmetal Alchemist 鋼の錬金術師<br><b>Aniplex Studio</b></p>
+            </div>
+        </div>
+
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/hakuoki.jpg" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Haku%C5%8Dki'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Hakuōki 薄桜鬼<br><b>Deen Studio</b></p>
+            </div>
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/hozukicoolheadedness.jpg" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Hozuki%27s_Coolheadedness'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Cold Hearted Hozuki 鬼灯の冷徹<br><b>Deen Studio</b></p>
+            </div>
+        </div>
+
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/mononoke.png" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Princess_Mononoke'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>Princess Mononoke もののけ姫<br><b>Ghibli Studio</b></p>
+            </div>
+            <div class="w3-container">
+                <div class="w3-display-container w3-center">
+                    <img src="/FinalProject/images/worldfirstlove.jpg" style="width:100%">
+                    <span class="w3-tag w3-display-topleft">Star</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <a href='https://en.wikipedia.org/wiki/Sekai-ichi_Hatsukoi'>
+                            <button class="w3-button w3-black w3-center">Check Info</button>
+                        </a>
+                    </div>
+                </div>
+                <p>The World's Greatest First Love 世界一初恋<br><b>Deen Studio</b></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+        <div class="w3-row-padding">
+            <div class="w3-col s4" >
+                <h4>New Work</h4>
+                <p>Is there Any Animation You Want See But Cannot Find?</p>
+                <form action="/action_page.php" target="_blank">
+                    <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Studio" name="Studio" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Producer" name="Producer" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Username" name="Username" required></p>
+                    <button type="submit" class="w3-button w3-block w3-black">Send</button>
+                </form>
+            </div>
+
+
+
+            <div class="w3-col s4 w3-justify" style="float:right">
+                <h4>Final Project</h4>
+                <p><i class="fa fa-user"></i> Zhiyu Zhu</p>
+                <p><i class="fa fa-id-card-o"></i> zzhu24</p>
+                <p><i class="fa fa-fw fa fa-github"></i>source from: https://www.w3schools.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="w3-black w3-center w3-padding-24">Zhiyu Zhu (zzhu24) <br>   source from : <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+    <!-- End page content -->
+</div>
+
+<!-- Signin Box-->
+<div id="signinbox" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding:16px;width:50%">
+        <div class="w3-container w3-white w3-center">
+            <h2 class="w3-wide w3-center">Sign In</h2>
+            <p>Enter Username And Password To Sign In !</p>
+            <p><input class="w3-input w3-border" placeholder="Enter Username" name="username" required></p>
+            <p><input type="password" class="w3-input w3-border" placeholder="Enter Password" name="password" required></p>
+            <p class="w3-wide w3-center">
+                <a href='/FinalProject/ProfilePage.html'>
+                    <button type="button" class="w3-button w3-padding-large w3-black w3-margin-bottom" onclick="save_username()" name="click_sign_in">Sign In</button>
+                </a>
+                <button type="button" class="w3-button w3-padding-large w3-black w3-margin-bottom" onclick="document.getElementById('signinbox').style.display='none'">Cancel</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Accordion
+    function myAccFunc(listname) {
+        var x = document.getElementById(listname);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("mySidebar").style.width = "30%";
+        document.getElementById("myOverlay").style.display = "block";
+        document.getElementById("myOverlay").style.width = "60%";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    function save_search_local() {
+        var studio_name = document.getElementsByName("search_studio")[0].value;
+        // alert(studio_name);
+        localStorage.setItem('saved_studio_name', studio_name);
+    }
+
+    function clear_restart_local(){
+        localStorage.clear();
+        alert("Already Cleared Local !!!");
+    }
+
+    function save_username() {
+        var user_name = document.getElementsByName("username")[0].value;
+        //alert(user_name);
+        localStorage.setItem('saved_user_name', user_name);
+    }
+
+
+
+</script>
+
+</body>
+</html>

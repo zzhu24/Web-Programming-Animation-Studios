@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<style>
+* {
+    box-sizing: border-box
+}
+
+html {
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.6;
+    color: black;
+    background: #F9E9F4;
+}
+
+#root {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 1.5rem 2.5rem;
+    margin: 0 0 2rem 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+}
+
+
+p {
+    text-align: center;
+    padding: 0px 20px 20px;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 1rem;
+    background: white;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 900px) {
+    .card {
+        flex: 1 1 calc(50% - 2rem);
+    }
+}
+
+.card:nth-child(1n) h1 {
+    background-image: linear-gradient(90deg, #3337AF 0%, #DDDDF6 50%, #3337AF 100%);
+}
+
+.card:nth-child(2n) h1 {
+    background-image: linear-gradient(90deg, #D436C4 0%, #F2BEEC 50%, #D436C4 100%);
+}
+
+.card:nth-child(3n) h1 {
+    background-image: linear-gradient(90deg, #47BD4B 0%, #D0FAD1 50%, #47BD4B 100%);
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recommendation Page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script>
+
+        if(localStorage.getItem('star_anime') == null){
+            localStorage.setItem('star_anime', JSON.stringify([]));
+        }
+        if(localStorage.getItem('ghibli_count') == null){
+            localStorage.setItem('ghibli_count', JSON.stringify(0));
+        }
+        if(localStorage.getItem('aniplex_count') == null){
+            localStorage.setItem('aniplex_count', JSON.stringify(0));
+        }
+        if(localStorage.getItem('bones_count') == null){
+            localStorage.setItem('bones_count', JSON.stringify(0));
+        }
+
+
+        //ghibli has in total: 20
+        //bones has in total: 34
+        //aniplex has in total: 36
+        //generation random index for recommendation
+        var ghibli_first = Math.floor(Math.random() * 20);
+        var ghibli_second = Math.floor(Math.random() * 20);
+        while(ghibli_first == ghibli_second){
+            ghibli_second = Math.floor(Math.random() * 20);
+        }
+        var ghibli_third = Math.floor(Math.random() * 20);
+        while(ghibli_first == ghibli_second || ghibli_first == ghibli_third){
+            ghibli_third = Math.floor(Math.random() * 20);
+        }
+        var ghibli_fourth = Math.floor(Math.random() * 20);
+        while(ghibli_fourth == ghibli_second || ghibli_fourth == ghibli_third || ghibli_fourth == ghibli_first){
+            ghibli_fourth = Math.floor(Math.random() * 20);
+        }
+
+        var bones_first = Math.floor(Math.random() * 34);
+        var bones_second = Math.floor(Math.random() * 34);
+        while(bones_first == bones_second){
+            bones_second = Math.floor(Math.random() * 34);
+        }
+        var bones_third = Math.floor(Math.random() * 34);
+        while(bones_first == bones_second || bones_first == bones_third){
+            bones_third = Math.floor(Math.random() * 34);
+        }
+        var bones_fourth = Math.floor(Math.random() * 20);
+        while(bones_fourth == bones_first || bones_fourth == bones_second || bones_fourth == bones_third){
+            bones_fourth = Math.floor(Math.random() * 20);
+        }
+
+
+        var aniplex_first = Math.floor(Math.random() * 36);
+        var aniplex_second = Math.floor(Math.random() * 36);
+        while(aniplex_first == aniplex_second){
+            aniplex_second = Math.floor(Math.random() * 36);
+        }
+        var aniplex_third = Math.floor(Math.random() * 36);
+        while(aniplex_first == aniplex_second || aniplex_first == aniplex_third){
+            aniplex_third = Math.floor(Math.random() * 36);
+        }
+        var aniplex_fourth = Math.floor(Math.random() * 20);
+        while(aniplex_fourth == aniplex_first || aniplex_fourth == aniplex_second || aniplex_fourth == aniplex_third){
+            aniplex_fourth = Math.floor(Math.random() * 20);
+        }
+
+
+
+        var ghibli_click = localStorage.getItem('ghibli_count');
+
+        var aniplex_click = localStorage.getItem('aniplex_count');
+
+        var bones_click = localStorage.getItem('bones_count');
+
+
+
+
+        const app = document.getElementById('root');
+
+        const logo = document.createElement('img');
+
+
+        logo.onclick = function() {
+            window.location.href = '/FinalProject/StartPage.html';
+        };
+
+
+        if(ghibli_click >= aniplex_click && ghibli_click >= bones_click){
+            logo.src = 'https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg';
+            app.appendChild(logo);
+        }
+        else if(aniplex_click >= ghibli_click && aniplex_click >= bones_click){
+            logo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/A-1_Pictures_Logo.svg';
+            app.appendChild(logo);
+        }
+        else{
+            logo.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Bones_logo.svg/330px-Bones_logo.svg.png';
+            app.appendChild(logo);
+        }
+
+
+
+        const p_info = document.createElement('p');
+        p_info.textContent = "Here is the Recommendation For You !!!!";
+        app.appendChild(logo);
+        app.appendChild(p_info);
+
+
+
+        const container = document.createElement('div');
+        container.setAttribute('class', 'container');
+
+
+
+
+
+
+        if(ghibli_click >= aniplex_click && ghibli_click >= bones_click){
+
+            var request = new XMLHttpRequest();
+            app.appendChild(container);
+
+            file_name = 'GhibliAnimations.json';
+            request.open('GET', file_name, true);
+            request.onload = function () {
+
+                var data = JSON.parse(this.response);
+                //alert(search_studio + " has in total: " + data.length);
+                //ghibli has in total: 20
+                //bones has in total: 34
+                //aniplex has in total: 36
+                for(var i = (data.length - 1); i >= 0; i--) {
+
+                    if(i == ghibli_first || i == ghibli_second || i == ghibli_third || i == ghibli_fourth) {
+
+                        var movie = data[i];
+
+                        const card = document.createElement('div');
+                        card.setAttribute('class', 'card');
+
+                        const h1 = document.createElement('h1');
+                        h1.textContent = "Name: " + `${movie.Name}`;
+
+                        const image = document.createElement('img');
+                        image.onclick = function(){
+                            var info = {"Name": movie.Name,
+                                        "Url": movie.Url,
+                                        "Release": movie.Release,
+                                        "Image": movie.Image,
+                                        "Director": movie.Director,
+                                        "Producer": movie.Producer,
+                                        "Description":movie.Description};
+                            //alert(JSON.stringify(info));
+                            var stored_anime = JSON.parse(localStorage.getItem('star_anime'));
+                            //alert(JSON.stringify(stored_anime));
+                            stored_anime.push(info);
+                            //alert(JSON.stringify(stored_anime));
+                            localStorage.setItem("star_anime", JSON.stringify(stored_anime));
+                            alert("Added To Favourite Animation List!!!!");
+                            //console.log(localStorage.getItem('star_anime'));
+
+                            if(search_studio === 'ghibli'){
+                                var count = JSON.parse(localStorage.getItem('ghibli_count'));
+                                localStorage.setItem("ghibli_count", JSON.stringify(count+1));
+                            }
+                            else if(search_studio === 'bones'){
+                                var count = JSON.parse(localStorage.getItem('bones_count'));
+                                localStorage.setItem("bones_count", JSON.stringify(count+1));
+                            }
+                            else{
+                                var count = JSON.parse(localStorage.getItem('aniplex_count'));
+                                localStorage.setItem("aniplex_count", JSON.stringify(count+1));
+                            }
+
+                            //alert("Ghibli Count is: "+localStorage.getItem('ghibli_count'));
+                            //alert("Bones Count is: "+localStorage.getItem('bones_count'));
+                            //alert("Aniplex Count is: "+localStorage.getItem('aniplex_count'));
+
+
+                        };
+                        image.src = movie.Image;
+
+                        const p1 = document.createElement('p');
+                        movie.release = movie.Release;
+                        p1.textContent = "Release Day: " + `${movie.release}`;
+
+                        const p2 = document.createElement('p');
+                        movie.director = movie.Director;
+                        p2.textContent = "Directed By: " + `${movie.director}`;
+
+                        const p3 = document.createElement('p');
+                        movie.producer = movie.Director;
+                        p3.textContent = "Produced By: " + `${movie.producer}`;
+
+                        const p = document.createElement('p');
+                        movie.Information = movie.Description;
+                        p.textContent = "Plot: " + `${movie.Information}`;
+
+                        container.appendChild(card);
+                        card.appendChild(h1);
+                        card.appendChild(image);
+                        card.appendChild(p2);
+                        card.appendChild(p3);
+                        card.appendChild(p1);
+                        card.appendChild(p);
+                    }
+                }
+            }
+            request.send();
+
+
+        }
+
+
+        else if(aniplex_click >= bones_click && aniplex_click >= ghibli_click){
+
+            var request = new XMLHttpRequest();
+            app.appendChild(container);
+
+            file_name = 'AniplexAnimations.json';
+            request.open('GET', file_name, true);
+            request.onload = function () {
+
+                var data = JSON.parse(this.response);
+                //alert(search_studio + " has in total: " + data.length);
+                //ghibli has in total: 20
+                //bones has in total: 34
+                //aniplex has in total: 36
+                for(var i = (data.length - 1); i >= 0; i--) {
+
+                    if(i == aniplex_first || i == aniplex_second || i == aniplex_third || i == aniplex_fourth) {
+
+                        var movie = data[i];
+
+                        const card = document.createElement('div');
+                        card.setAttribute('class', 'card');
+
+                        const h1 = document.createElement('h1');
+                        h1.textContent = "Name: " + `${movie.Name}`;
+
+                        const image = document.createElement('img');
+                        image.onclick = function(){
+                            var info = {"Name": movie.Name,
+                                        "Url": movie.Url,
+                                        "Release": movie.Release,
+                                        "Image": movie.Image,
+                                        "Director": movie.Director,
+                                        "Producer": movie.Producer,
+                                        "Description":movie.Description};
+                            //alert(JSON.stringify(info));
+                            var stored_anime = JSON.parse(localStorage.getItem('star_anime'));
+                            //alert(JSON.stringify(stored_anime));
+                            stored_anime.push(info);
+                            //alert(JSON.stringify(stored_anime));
+                            localStorage.setItem("star_anime", JSON.stringify(stored_anime));
+                            alert("Added To Favourite Animation List!!!!");
+                            //console.log(localStorage.getItem('star_anime'));
+
+                            if(search_studio === 'ghibli'){
+                                var count = JSON.parse(localStorage.getItem('ghibli_count'));
+                                localStorage.setItem("ghibli_count", JSON.stringify(count+1));
+                            }
+                            else if(search_studio === 'bones'){
+                                var count = JSON.parse(localStorage.getItem('bones_count'));
+                                localStorage.setItem("bones_count", JSON.stringify(count+1));
+                            }
+                            else{
+                                var count = JSON.parse(localStorage.getItem('aniplex_count'));
+                                localStorage.setItem("aniplex_count", JSON.stringify(count+1));
+                            }
+                            //alert("Ghibli Count is: "+localStorage.getItem('ghibli_count'));
+                            //alert("Bones Count is: "+localStorage.getItem('bones_count'));
+                            //alert("Aniplex Count is: "+localStorage.getItem('aniplex_count'));
+
+
+                        };
+                        image.src = movie.Image;
+
+                        const p1 = document.createElement('p');
+                        movie.release = movie.Release;
+                        p1.textContent = "Release Day: " + `${movie.release}`;
+
+                        const p2 = document.createElement('p');
+                        movie.director = movie.Director;
+                        p2.textContent = "Directed By: " + `${movie.director}`;
+
+                        const p3 = document.createElement('p');
+                        movie.producer = movie.Director;
+                        p3.textContent = "Produced By: " + `${movie.producer}`;
+
+                        const p = document.createElement('p');
+                        movie.Information = movie.Description;
+                        p.textContent = "Plot: " + `${movie.Information}`;
+
+                        container.appendChild(card);
+                        card.appendChild(h1);
+                        card.appendChild(image);
+                        card.appendChild(p2);
+                        card.appendChild(p3);
+                        card.appendChild(p1);
+                        card.appendChild(p);
+                    }
+                }
+            }
+            request.send();
+
+
+        }
+
+
+        else{
+
+            var request = new XMLHttpRequest();
+            app.appendChild(container);
+
+            file_name = 'BonesAnimations.json';
+            request.open('GET', file_name, true);
+            request.onload = function () {
+
+                var data = JSON.parse(this.response);
+                //alert(search_studio + " has in total: " + data.length);
+                //ghibli has in total: 20
+                //bones has in total: 34
+                //aniplex has in total: 36
+                for(var i = (data.length - 1); i >= 0; i--) {
+
+                    if(i == bones_first || i == bones_second || i == bones_third || i == bones_fourth) {
+
+                        var movie = data[i];
+
+                        const card = document.createElement('div');
+                        card.setAttribute('class', 'card');
+
+                        const h1 = document.createElement('h1');
+                        h1.textContent = "Name: " + `${movie.Name}`;
+
+                        const image = document.createElement('img');
+                        image.onclick = function(){
+                            var info = {"Name": movie.Name,
+                                        "Url": movie.Url,
+                                        "Release": movie.Release,
+                                        "Image": movie.Image,
+                                        "Director": movie.Director,
+                                        "Producer": movie.Producer,
+                                        "Description":movie.Description};
+                            //alert(JSON.stringify(info));
+                            var stored_anime = JSON.parse(localStorage.getItem('star_anime'));
+                            //alert(JSON.stringify(stored_anime));
+                            stored_anime.push(info);
+                            //alert(JSON.stringify(stored_anime));
+                            localStorage.setItem("star_anime", JSON.stringify(stored_anime));
+                            alert("Added To Favourite Animation List!!!!");
+                            //console.log(localStorage.getItem('star_anime'));
+
+
+                            if(search_studio === 'ghibli'){
+                                var count = JSON.parse(localStorage.getItem('ghibli_count'));
+                                localStorage.setItem("ghibli_count", JSON.stringify(count+1));
+                            }
+                            else if(search_studio === 'bones'){
+                                var count = JSON.parse(localStorage.getItem('bones_count'));
+                                localStorage.setItem("bones_count", JSON.stringify(count+1));
+                            }
+                            else{
+                                var count = JSON.parse(localStorage.getItem('aniplex_count'));
+                                localStorage.setItem("aniplex_count", JSON.stringify(count+1));
+                            }
+
+                            //alert("Ghibli Count is: "+localStorage.getItem('ghibli_count'));
+                            //alert("Bones Count is: "+localStorage.getItem('bones_count'));
+                            //alert("Aniplex Count is: "+localStorage.getItem('aniplex_count'));
+
+
+                        };
+                        image.src = movie.Image;
+
+                        const p1 = document.createElement('p');
+                        movie.release = movie.Release;
+                        p1.textContent = "Release Day: " + `${movie.release}`;
+
+                        const p2 = document.createElement('p');
+                        movie.director = movie.Director;
+                        p2.textContent = "Directed By: " + `${movie.director}`;
+
+                        const p3 = document.createElement('p');
+                        movie.producer = movie.Director;
+                        p3.textContent = "Produced By: " + `${movie.producer}`;
+
+                        const p = document.createElement('p');
+                        movie.Information = movie.Description;
+                        p.textContent = "Plot: " + `${movie.Information}`;
+
+                        container.appendChild(card);
+                        card.appendChild(h1);
+                        card.appendChild(image);
+                        card.appendChild(p2);
+                        card.appendChild(p3);
+                        card.appendChild(p1);
+                        card.appendChild(p);
+                    }
+                }
+            }
+            request.send();
+
+
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

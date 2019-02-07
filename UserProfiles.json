@@ -1,0 +1,72 @@
+[
+    {
+        "Name": "Tanaka",
+        "Birthday": "July 08",
+        "FavoriteStudio": "Aniplex Studio",
+        "FavoriteAnimation": "Phycho Path",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/5/5c/PsychoPassvol1.jpg"
+    },
+    {
+        "Name": "Fayina",
+        "Birthday": "Sept 10",
+        "FavoriteStudio": "東映動畫株式会社",
+        "FavoriteAnimation": "One Piece",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/9/90/One_Piece%2C_Volume_61_Cover_%28Japanese%29.jpg"
+    },
+    {
+        "Name": "Shigeaki",
+        "Birthday": "July 11",
+        "FavoriteStudio": "Kyoto Studio",
+        "FavoriteAnimation": "Free!",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/9/9b/Free%21_promotional_image_1.jpg"
+    },
+    {
+        "Name": "Yayi",
+        "Birthday": "May 29",
+        "FavoriteStudio": "Sunrise Studio",
+        "FavoriteAnimation": "犬夜叉",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/2/2a/InuYasha1.jpg"
+    },
+    {
+        "Name": "Masuda",
+        "Birthday": "December 15",
+        "FavoriteStudio": "Sunrise Studio",
+        "FavoriteAnimation": "銀魂",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/9/9a/GintamaFinalChapterposter.jpg"
+    },
+    {
+        "Name": "Yuzhu",
+        "Birthday": "Octember 09",
+        "FavoriteStudio": "Ghibli Studio",
+        "FavoriteAnimation": "Castle in the Sky",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/f/f5/Castle_in_the_Sky_%281986%29.png"
+    },
+    {
+        "Name": "Zhenfeng",
+        "Birthday": "September 03",
+        "FavoriteStudio": "Production I.G",
+        "FavoriteAnimation": "Attack On Titan",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/d/d6/Shingeki_no_Kyojin_manga_volume_1.jpg"
+    },
+    {
+        "Name": "Tegoshi",
+        "Birthday": "November 11",
+        "FavoriteStudio": "白泉社",
+        "FavoriteAnimation": "夏目友人帳",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/0/0c/Natsume%27s_Book_of_Friends_manga_vol_1.jpg"
+    },
+    {
+        "Name": "Mashimodo",
+        "Birthday": "February 19",
+        "FavoriteStudio": "小學館",
+        "FavoriteAnimation": "Detective Conan",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/3/3f/Case_Closed_Volume_36.png"
+    },
+    {
+        "Name": "Koyama",
+        "Birthday": "May 01",
+        "FavoriteStudio": "Ghibli Studio",
+        "FavoriteAnimation": "The Spirited Away",
+        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/d/db/Spirited_Away_Japanese_poster.png"
+    }
+]
